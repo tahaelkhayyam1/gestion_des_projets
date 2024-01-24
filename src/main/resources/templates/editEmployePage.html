@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modifier Employé</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .container {
+            padding-top: 20px;
+        }
+
+        .form-label {
+            margin-top: 10px;
+        }
+
+        .form-control {
+            margin-bottom: 10px;
+        }
+
+        .btn-update {
+            margin-top: 20px;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+            color: white;
+        }
+
+        .btn-update:hover {
+            background-color: #4cae4c;
+            border-color: #4cae4c;
+        }
+
+        .back-btn {
+            margin-top: 10px;
+            display: block;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Modifier Employé</h2>
+        <form th:action="@{/employe/update}" th:object="${employe}" method="post" class="form-group">
+            <input type="hidden" th:field="*{cin}" />
+
+            <label for="nom" class="form-label">Nom de l'Employé:</label>
+            <input type="text" th:field="*{nom}" id="nom" class="form-control" />
+
+            <label for="prenom" class="form-label">Prénom de l'Employé:</label>
+            <input type="text" th:field="*{prenom}" id="prenom" class="form-control" />
+
+            <label for="noTel" class="form-label">Numéro de téléphone:</label>
+            <input type="text" th:field="*{noTel}" id="noTel" class="form-control" />
+
+            <label for="adresse" class="form-label">Adresse:</label>
+            <input type="text" th:field="*{adresse}" id="adresse" class="form-control" />
+
+            <label for="recrute" class="form-label">Date de recrutement:</label>
+            <input type="text" th:field="*{recrute}" id="recrute" class="form-control" />
+
+            <label for="salaire" class="form-label">Salaire:</label>
+            <input type="text" th:field="*{salaire}" id="salaire" class="form-control" />
+
+            <!-- Add any other employe fields you need to update here -->
+
+            <button type="submit" class="btn btn-update">Mettre à jour</button>
+        </form>
+        <a href="/employe/" class="back-btn">Annuler</a>
+    </div>
+
+    <!-- Optional Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

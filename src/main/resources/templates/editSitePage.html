@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modifier Site</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .container {
+            padding-top: 20px;
+        }
+
+        .form-label {
+            margin-top: 10px;
+        }
+
+        .form-control {
+            margin-bottom: 10px;
+        }
+
+        .btn-update {
+            margin-top: 20px;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+            color: white;
+        }
+
+        .btn-update:hover {
+            background-color: #4cae4c;
+            border-color: #4cae4c;
+        }
+
+        .back-btn {
+            margin-top: 10px;
+            display: block;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Modifier Site</h2>
+        <form th:action="@{/site/update}" th:object="${site}" method="post" class="form-group">
+            <input type="hidden" th:field="*{idSite}" />
+
+            <label for="nomSite" class="form-label">Nom du Site:</label>
+            <input type="text" th:field="*{nomSite}" id="nomSite" class="form-control" />
+
+            <label for="location" class="form-label">Emplacement:</label>
+            <input type="text" th:field="*{location}" id="location" class="form-control" />
+
+            <label for="adresseSite" class="form-label">Adresse:</label>
+            <input type="text" th:field="*{adresseSite}" id="adresseSite" class="form-control" />
+
+            <label for="ville" class="form-label">Ville:</label>
+            <input type="text" th:field="*{ville}" id="ville" class="form-control" />
+
+            <!-- Add any other site fields you need to update here -->
+
+            <button type="submit" class="btn btn-update">Mettre à jour</button>
+        </form>
+        <a href="/site/" class="back-btn">Annuler</a>
+    </div>
+
+    <!-- Optional Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

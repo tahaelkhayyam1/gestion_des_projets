@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Missions</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <style>
+        body {
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            padding-top: 20px;
+        }
+
+        .table-responsive {
+            margin-top: 20px;
+        }
+
+        .btn-edit {
+            color: #fff;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+        }
+
+        .btn-edit:hover {
+            background-color: #4cae4c;
+            border-color: #4cae4c;
+        }
+
+        .btn-delete {
+            color: #fff;
+            background-color: #d9534f;
+            border-color: #d43f3a;
+        }
+
+        .btn-delete:hover {
+            background-color: #d43f3a;
+            border-color: #d43f3a;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            display: block;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Liste des Missions</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nom de la Mission</th>
+          
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="mission : ${list}">
+                        <td th:text="${mission.nomMission}"></td>
+              
+                        <td>
+                            <a th:href="@{/mission/edit(id=${mission.idMission})}" class="btn btn-edit">Modifier</a>
+                            <a th:href="@{/mission/delete(id=${mission.idMission})}" class="btn btn-delete" onclick="return confirmDelete();">Supprimer</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="/mission/" class="back-btn">Retour</a>
+    </div>
+
+    <!-- Include JQuery, Popper.js, and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        // JavaScript function for confirmation
+        function confirmDelete() {
+            return confirm("Êtes-vous sûr de vouloir supprimer cette mission ?");
+        }
+    </script>
+
+</body>
+</html>

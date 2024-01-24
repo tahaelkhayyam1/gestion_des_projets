@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enregistrer Employé</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        a {
+            text-align: center;
+            color: #007bff;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <form th:action="@{/employe/save}" th:object="${employe}" method="post">
+        <h2>Enregistrer un nouvel employé</h2>
+
+        <label for="cin">CIN:</label>
+ 		<input type="text" th:field="*{cin}" id="cin" name="cin"/>
+
+        <label for="nom">Nom:</label>
+        <input type="text" th:field="*{nom}" id="nom" name="nom"/>
+
+        <label for="prenom">Prénom:</label>
+        <input type="text" th:field="*{prenom}" id="prenom" name="prenom"/>
+
+        <label for="noTel">Numéro de Téléphone:</label>
+        <input type="text" th:field="*{noTel}" id="noTel" name="noTel"/>
+
+        <label for="adresse">Adresse:</label>
+        <input type="text" th:field="*{adresse}" id="adresse" name="adresse"/>
+
+        <label for="recrute">Date de Recrutement:</label>
+        <input type="date" th:field="*{recrute}" id="recrute" name="recrute"/>
+
+        <label for="salaire">Salaire:</label>
+        <input type="number" step="0.01" th:field="*{salaire}" id="salaire" name="salaire"/>
+
+        <div class="button-group">
+            <button type="submit">Enregistrer</button>
+            <button type="button" onclick="window.location.href='/homePage'">Retour à la page principale</button>
+        </div>
+    </form>
+</body>
+</html>
